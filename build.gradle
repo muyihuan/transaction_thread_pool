@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'maven'
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group 'com.github.muyi.txn-threadpool'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    annotationProcessor('org.projectlombok:lombok:1.18.10')
+    compileOnly('org.projectlombok:lombok:1.18.10')
+    implementation('org.slf4j:slf4j-api:1.7.26')
+    // 日志采用logback
+    implementation('ch.qos.logback:logback-classic:1.1.8')
+    // 视图树的解析依赖jackson
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.8.5')
+    implementation('cglib:cglib:3.1')
+    implementation('commons-collections:commons-collections:3.2.1')
+
+
+    // ...
+
+
+    // 单元测试
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.10'
+    testImplementation 'org.projectlombok:lombok:1.18.10'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
+}
+
+test {
+    useJUnitPlatform()
+}
